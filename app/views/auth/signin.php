@@ -1,0 +1,57 @@
+<?php
+$title = 'Signin';
+ob_start();
+?>
+
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 bg-white rounded-2xl shadow p-10">
+
+    <h1 class="text-3xl font-bold text-black-900 text-center">Sign In</h1>
+    <p class="mt-2 text-center text-gray-600">
+      Welcome back. Please enter your credentials.
+    </p>
+
+    <form method="POST" action="/signin" class="mt-10 space-y-6">
+
+    <!-- {{ if .Error }}
+    <div class="px-4 py-3 bg-red-100 text-red-700 rounded-lg text-sm">
+    {{ .Error }}
+    </div>
+    {{ end }} -->
+      <!-- Email -->
+      <div>
+        <label for="email" class="block text-sm font-semibold text-gray-700">Email</label>
+        <input type="email" id="email" name="email" required
+               class="mt-2 w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <!-- Password -->
+      <div>
+        <div class="flex justify-between items-center">
+          <label for="password" class="block text-sm font-semibold text-gray-700">Password</label>
+          <a href="/forgot-password" class="text-sm text-black-600 hover:underline">Forgot password?</a>
+        </div>
+        <input type="password" id="password" name="password" required
+               class="mt-2 w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <!-- Submit -->
+      <div class="pt-4">
+        <button type="submit"
+                class="w-full px-6 py-3 rounded-full bg-gray-600 text-white font-semibold hover:bg-transparent hover:text-blue-600 border-2 border-blue-600 transition">
+          Sign In
+        </button>
+      </div>
+
+      <!-- Link -->
+      <p class="text-center text-sm text-gray-600">
+        Do not have an account?
+        <a href="/signup" class="text-black-600 font-semibold hover:underline">Create one</a>
+      </p>
+
+    </form>
+  </div>
+
+<?php
+    $content = ob_get_clean();
+    require __DIR__ .  '/../layouts/main.php';
+?>
