@@ -1,8 +1,3 @@
-<?php
-$title = 'Feed';
-
-ob_start();
-?>
 
 <div class="space-y-6">
   <?php foreach ($posts as $post): ?>
@@ -22,8 +17,3 @@ ob_start();
     </div>
   <?php endforeach; ?>
 </div>
-
-<?php
-$content = ob_get_clean();
-require __DIR__ . '/../layouts/main.php';
-?>

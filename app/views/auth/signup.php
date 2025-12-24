@@ -1,9 +1,4 @@
-<?php
-$title = 'Signin';
-ob_start();
-?>
 
-<section class="py-20 bg-gray-50">
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 bg-white rounded-2xl shadow p-10">
 
     <h1 class="text-3xl font-bold text-black-900 text-center">Create an Account</h1>
@@ -21,17 +16,17 @@ ob_start();
 
       <!-- Fisrt Name -->
       <div>
-        <label for="first_name" class="block text-sm font-semibold text-gray-700">First Name</label>
-        <input type="text" id="first_name" name="first_name" required
+        <label for="name" class="block text-sm font-semibold text-gray-700">Nickname</label>
+        <input type="text" id="name" name="name" required
                class="mt-2 w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
       </div>
 
-      <!-- Second Name -->
+      <!-- Second Name
       <div>
         <label for="second_name" class="block text-sm font-semibold text-gray-700">Second Name</label>
         <input type="text" id="second_name" name="second_name" required
                class="mt-2 w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-      </div>
+      </div> -->
 
 
       <!-- Email -->
@@ -65,7 +60,7 @@ ob_start();
       <!-- Submit -->
       <div class="pt-4">
         <button type="submit"
-                class="w-full px-6 py-3 rounded-full bg-gray-600 text-white font-semibold hover:bg-transparent hover:text-blue-600 border-2 border-blue-600 transition">
+                class="w-full px-6 py-3 rounded-full bg-gray-600 text-white font-semibold hover:bg-transparent hover:text-blue-600 border-2 border-black-600 transition">
           Sign Up
         </button>
       </div>
@@ -78,9 +73,3 @@ ob_start();
 
     </form>
   </div>
-</section>
-
-<?php
-$content = ob_get_clean();
-require __DIR__ . '/../layouts/main.php';
-?>

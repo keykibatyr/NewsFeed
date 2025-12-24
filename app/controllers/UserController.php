@@ -1,9 +1,80 @@
 <?php
+    require_once(ROOT_PATH . '/models/user.php');
+    define("COOKIE_SESSION", "session");
+    class UserController {
 
+        private UserService $userService;
+        private SessionService $sessionService;
 
-if ($uri === '/signin'){
-    require __DIR__ . '/../views/auth/signin.php';
-} elseif ($uri === '/signup') {
-    require __DIR__ . '/../views/auth/signup.php';
-}
+        public function __construct(
+            UserService $userService, 
+            SessionService $sessionService)
+            {
+            $this->userService = $userService;
+            $this->sessionService = $sessionService;
+        }
+
+        public function signup() {
+            return [
+                'path' => 'auth/signup',
+                'data' => null
+            ];
+        }
+
+        public function processSignup() {
+            $nickname = trim($_POST['name'] ?? '');
+            $email = trim($_POST['email'] ?? '');
+            $password = $_POST['password'] ?? '';
+
+            if ($nickname === '' || $email === '' || $password === ''){
+                return [
+                    'path' => 'auth/signin',
+                    'data' => null
+                ];
+            }
+
+            $user = $this->userService->CreateUser($nickname, 
+            $email, $password);
+            error_log($user);
+            $session = $this->sessionService->Create($user->getID());
+            setcookie('cookie_session', $session->getToken(), 
+            [
+            "httponly" => true,
+            "secure"   => false,   // make true for HTTPS only
+            "samesite" => "Strict"
+            ]);
+            header('Location: /');
+            exit;
+        }
+
+        public function signin() {
+            return [
+                'path' => 'auth/signin',
+                'data' => null
+            ];
+        }
+
+        public function proccessSignIn(){
+            $email = trim($_POST['email'] ?? '');
+            $password = $_POST['password'] ?? '';
+
+            if ($email === '' || $password === ''){
+                return [
+                    'path' => 'feed/index',
+                    'data' => null
+                ];
+            }
+
+            $user = $this -> userService -> Authenticate($password, $email);
+            $session = $this->sessionService->Create($user->getID());
+            setcookie('cookie_session', $session->getToken(), 
+            [
+            "httponly" => true,
+            "secure"   => false,   // make true for HTTPS only
+            "samesite" => "Strict"
+            ]);
+            header('Location: /');
+            exit;
+        }
+    }
 ?>

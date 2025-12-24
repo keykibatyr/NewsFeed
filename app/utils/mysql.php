@@ -1,7 +1,6 @@
 <?php
-    class MysqlConfig{
+    class MySqlConfig{
         public string $host;
-        public string $port;
         public string $user;
         public string $password;
         public string $database;
@@ -21,7 +20,7 @@
 
         public function toString(): string {
             return 'mysql:host=' . 
-            $this -> host + ';dbname=' . 
+            $this -> host . ';dbname=' . 
             $this -> database . ';charset=utf8mb4';
         }
     }

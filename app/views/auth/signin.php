@@ -1,7 +1,3 @@
-<?php
-$title = 'Signin';
-ob_start();
-?>
 
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 bg-white rounded-2xl shadow p-10">
 
@@ -37,7 +33,7 @@ ob_start();
       <!-- Submit -->
       <div class="pt-4">
         <button type="submit"
-                class="w-full px-6 py-3 rounded-full bg-gray-600 text-white font-semibold hover:bg-transparent hover:text-blue-600 border-2 border-blue-600 transition">
+                class="w-full px-6 py-3 rounded-full bg-gray-600 text-white font-semibold hover:bg-transparent hover:text-blue-600 border-2 border-black-600 transition">
           Sign In
         </button>
       </div>
@@ -51,7 +47,3 @@ ob_start();
     </form>
   </div>
 
-<?php
-    $content = ob_get_clean();
-    require __DIR__ .  '/../layouts/main.php';
-?>
