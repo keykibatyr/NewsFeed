@@ -70,7 +70,7 @@
             return $user;
         }
 
-        function Authenticate(string $password, string $email): User{
+        function Authenticate(string $password, string $email): ?User{
             $email = strtolower($email);
 
             $query = $this->db->prepare(
@@ -86,8 +86,20 @@
                 $user = new User($id, $nickname, $email,  $passwordHash, $role);
                 return $user;
             } else {
-                throw new Exception("Could not Authenticate");
+               return null;
             }
+        }
+
+        function AllUsers(){
+            $query = $this -> db -> prepare(
+                "SELECT COUNT(*) FROM users"
+            );
+
+            $query -> execute();
+
+            $users = $query -> fetchColumn();
+
+            return $users;
         }
     }
 

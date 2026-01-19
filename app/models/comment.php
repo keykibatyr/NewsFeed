@@ -62,5 +62,17 @@
 
             return $comments;
         }   
+
+        function AllComments(){
+            $query = $this -> db -> prepare(
+                "SELECT COUNT(*) FROM comments"
+            );
+
+            $query -> execute();
+
+            $comments = $query -> fetchColumn();
+
+            return $comments;
+        }
     }
 ?>

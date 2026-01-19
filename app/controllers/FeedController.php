@@ -1,6 +1,4 @@
 <?php 
-
-use Facebook\WebDriver\Exception\ExpectedException;  
     require_once(ROOT_PATH . '/models/session.php');
     require_once(ROOT_PATH . '/models/post.php');
       require_once(ROOT_PATH . '/models/like.php');

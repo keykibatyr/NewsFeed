@@ -93,14 +93,14 @@
             return $posts;
         }
 
-        // public function NumberOfPosts(): array {
-        //     $query = $this -> db -> prepare("SELECT COUNT(*) FROM posts");
+        public function NumberOfPosts() {
+            $query = $this -> db -> prepare("SELECT COUNT(*) FROM posts");
 
-        //     $query -> execute();
+            $query -> execute();
 
-        //     $number = $query -> fetchAll(PDO::FETCH_ASSOC);
+            $number = $query -> fetchColumn();
 
-        //     return $number;
-        // }
+            return $number;
+        }
     }
 ?>

@@ -1,11 +1,12 @@
 <div class="bg-white rounded-lg shadow p-6 max-w-xl mx-auto">
-  <h1 class="text-xl font-semibold mb-4">Create Post</h1>
+  <h1 id = 'newPost' class="text-xl font-semibold mb-4">Create Post</h1>
 
   <form action="/post/create" method="POST" enctype="multipart/form-data" class="space-y-4">
     <div>
       <label class="block text-sm font-medium mb-1">Title</label>
       <input
         type="text"
+        id = 'title'
         name="title"
         required
         class="w-full border rounded px-3 py-2 focus:outline-none focus:ring"
@@ -16,6 +17,7 @@
       <label class="block text-sm font-medium mb-1">Description</label>
       <textarea
         name="description"
+        id = 'description'
         rows="4"
         required
         class="w-full border rounded px-3 py-2 focus:outline-none focus:ring"
@@ -34,6 +36,7 @@
     <button
       type="submit"
       name ="submit"
+      id = "submit"
       class="bg-black text-white px-4 py-2 rounded hover:opacity-90"
     >
       Publish

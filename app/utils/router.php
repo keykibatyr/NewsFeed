@@ -87,7 +87,9 @@
                 if (isset($result['data']['post_id'])){
                     $post_id = $result['data']['post_id'];
                 }
-
+                if (isset($result['data']['stats'])){
+                    $stats = $result['data']['stats'];
+                }
             } //refactor it later
 
             // var_dump($posts);

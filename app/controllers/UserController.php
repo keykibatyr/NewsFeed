@@ -66,6 +66,10 @@
             }
 
             $user = $this -> userService -> Authenticate($password, $email);
+            if ($user == null){
+                header('Location: /signin');
+                exit;
+            }
             $session = $this->sessionService->Create($user->getID());
             setcookie('cookie_session', $session->getToken(), 
             [

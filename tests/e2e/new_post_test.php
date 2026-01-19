@@ -15,45 +15,54 @@ $driver = RemoteWebDriver::create('http://localhost:4444/',
 
 $driver->get('http://localhost:80');
 
-$driver->findElement(WebDriverBy::id('signup')) -> click(); // find search input element
+$driver->findElement(WebDriverBy::id('signin')) -> click(); // find search input element
     // ->sendKeys('') // fill the search box
     // ->submit(); // submit the whole form
 
-sleep(2);
-
+// Find element of 'History' item in menu by its css selector
 $driver->wait()->until(
-    WebDriverExpectedCondition::elementTextContains(WebDriverBy::id('SignUp-Text'), 'Create an Account')
+    WebDriverExpectedCondition::elementTextContains(WebDriverBy::id('SignIn-Text'), 'Sign In')
 );
-
-sleep(2);
-
-$driver -> findElement(WebDriverBy::id('name')) -> click() 
-->sendKeys('Alitrvgrfrb');
 
 sleep(2);
 
 $driver -> findElement(WebDriverBy::id('email')) -> click() 
-->sendKeys('asdasd@abtrewrb');
+->sendKeys('asdasd@asdasd');
 
 sleep(2);
 
 $driver -> findElement(WebDriverBy::id('password')) -> click() 
-->sendKeys('asdasdasdasd');
+->sendKeys('asdasd')
+->submit();
 
-sleep(2);
+// sleep(2);
+
+// $driver->wait()->until(
+//     WebDriverExpectedCondition::elementTextContains(WebDriverBy::id('feed'), " ")
+// );
+
+$driver -> findElement(WebDriverBy::id('post')) -> click();
+
+$driver->wait()->until(
+    WebDriverExpectedCondition::elementTextContains(WebDriverBy::id('newPost'), 'Create Post')
+);
+
+sleep(5);
+
+
+$driver -> findElement(WebDriverBy::id('title')) -> click() 
+->sendKeys('testtest');
+
+sleep(5);
+
+$driver -> findElement(WebDriverBy::id('description')) -> click()
+->sendKeys('testetstestest');
 
 $driver -> findElement(WebDriverBy::id('submit')) -> click();
 
-sleep(2);
-
-$driver->wait()->until(
-    WebDriverExpectedCondition::elementTextContains(WebDriverBy::id('feed'), "")
-);
-
-sleep(2);
+sleep(5);
 
 $driver -> findElement(WebDriverBy::id('signout')) -> click();
-
 
 // Read text of the element and print it to output
 // echo 'About to click to a button with text: ' . $historyButton->getText();

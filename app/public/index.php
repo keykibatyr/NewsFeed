@@ -62,7 +62,7 @@ $router -> post('/post/comments/{id}', [FeedController::class, 'processComment']
 $router -> get('/admin/posts', [AdminController::class, 'posts']);
 $router -> post('/admin/posts/delete/{id}', [AdminController::class, 'delete']);
 
-// $router -> get('/admin/dashboard', [AdminController::class, 'dashboard']);
+$router -> get('/admin/dashboard', [AdminController::class, 'dashboard']);
 
 $router -> dispatch($_SERVER['REQUEST_METHOD'], 
 parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));

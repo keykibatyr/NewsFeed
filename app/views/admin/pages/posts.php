@@ -12,7 +12,8 @@
         <tr class="border-t">
           <td class="p-3"><?= $post->title ?></td>
           <td class="p-3"><?= $post->created_at->format('Y-m-d H:i:s') ?></td>
-          <td class="p-3 space-x-2">
+          <td class="p-3 space-x-2 ">
+            <div class = "flex items-center gap-2">
               <form action="/admin/posts/edit/<?= (int)$post->id ?>" method="POST">
               <button class="text-blue-600">
                 Edit
@@ -23,6 +24,7 @@
                 Delete
               </button>
             </form>
+            </div>
           </td>
         </tr>
       <?php endforeach; ?>
