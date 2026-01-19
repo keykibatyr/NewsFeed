@@ -28,6 +28,10 @@
             return $this->Role;
         }
 
+        public function getNick():string{
+            return $this->Nick;
+        }
+
         public function __toString() {
             return "Hello, {$this->Nick}!";
     }

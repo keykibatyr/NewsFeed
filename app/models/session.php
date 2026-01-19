@@ -54,10 +54,20 @@
             return $session;
         }
 
+        public function Delete(string $token){
+            $tokenHash =  hash('sha256', $token);
+
+            $query = $this -> db -> prepare("DELETE FROM sessions WHERE token_hash = ?");
+            $query -> execute([$tokenHash]);
+        }
+
         public function User(string $token):User{
             $tokenHash = hash('sha256', $token);
 
-            $query = $this -> db -> prepare("SELECT users.id, users.nickname, users.email, users.password_hash, users.role FROM users INNER JOIN sessions ON sessions.user_id = users.id WHERE sessions.token_hash = ?");
+            $query = $this -> db -> prepare("SELECT users.id, users.nickname, users.email, users.password_hash, users.role 
+            FROM users INNER JOIN sessions ON 
+            sessions.user_id = users.id 
+            WHERE sessions.token_hash = ?");
 
             $query -> execute([$tokenHash]);
 
@@ -68,7 +78,7 @@
             $passwordHash = $row['password_hash'];
             $role = $row['role'];
 
-            $user = new User($id, $nick, $email, $passwordHash, $row);
+            $user = new User($id, $nick, $email, $passwordHash, $role);
 
             return $user;
 
@@ -86,7 +96,7 @@
 
             $expires_at = new DateTime($row['expires_at']);
             $current_time = new DateTime();
-            if ($expires_at < $current_time){
+            if ($expires_at <= $current_time){
                 return true;
             }
             

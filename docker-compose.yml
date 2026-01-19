@@ -1,4 +1,43 @@
+#connecting nginx, a reverse proxy
 services:
+  web:
+    image: nginx:latest
+    
+    ports: 
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+      - ./app:/app
+      - ./uploads:/app/uploads #for finding the files in container
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost/health"]
+        interval: 5s
+
+#connecting a php, more in php/Dockerfile
+  app:
+    build:
+      context: .
+      dockerfile: ./php/Dockerfile
+    volumes:
+        - ./app:/app
+        - ./uploads:/app/uploads #mounitng uplodas folder to the app
+        - ./app/ping.php:/app/ping.php:ro
+    healthcheck:
+      test: ["CMD-SHELL", "SCRIPT_FILENAME=/app/ping.php REQUEST_METHOD=GET cgi-fcgi -bind -connect
+       localhost:9000 | grep -q 'pong'"]
+      interval: 5s
+      # timeout: 5s
+      # retries: 5
+      # start_period: 30s
+    # healthcheck:
+    #   test: curl -f http://localhost:80/|| exit 1
+    #   interval: 5s
+    #   timeout: 30s
+    #   retries: 5
+    #   start_period: 30s 
+
+      # DO THE DOCKER HEALTHCHECK
+    
   db:
     image: mysql:8.0.44
     restart: always
@@ -23,5 +62,3 @@ services:
 
 volumes:
   db_data:
-
-  

@@ -1,7 +1,7 @@
 
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 bg-white rounded-2xl shadow p-10">
 
-    <h1 class="text-3xl font-bold text-black-900 text-center">Create an Account</h1>
+    <h1 id = 'SignUp-Text' class="text-3xl font-bold text-black-900 text-center">Create an Account</h1>
     <p class="mt-2 text-center text-gray-600">Join our community and stay updated with events, news, and opportunities.</p>
     
 
@@ -58,7 +58,7 @@
       </div> -->
 
       <!-- Submit -->
-      <div class="pt-4">
+      <div id = 'submit' class="pt-4">
         <button type="submit"
                 class="w-full px-6 py-3 rounded-full bg-gray-600 text-white font-semibold hover:bg-transparent hover:text-blue-600 border-2 border-black-600 transition">
           Sign Up

@@ -1,6 +1,6 @@
 <?php
     require_once(ROOT_PATH . '/models/user.php');
-    define("COOKIE_SESSION", "session");
+    // define("COOKIE_SESSION", "session");
     class UserController {
 
         private UserService $userService;
@@ -16,7 +16,7 @@
 
         public function signup() {
             return [
-                'path' => 'auth/signup',
+                'path' => [null, 'auth/signup'],
                 'data' => null
             ];
         }
@@ -28,7 +28,7 @@
 
             if ($nickname === '' || $email === '' || $password === ''){
                 return [
-                    'path' => 'auth/signin',
+                    'path' => [null, 'auth/signin'],
                     'data' => null
                 ];
             }
@@ -49,18 +49,18 @@
 
         public function signin() {
             return [
-                'path' => 'auth/signin',
+                'path' => [null, 'auth/signin'],
                 'data' => null
             ];
         }
 
-        public function proccessSignIn(){
+        public function processSignIn(){
             $email = trim($_POST['email'] ?? '');
             $password = $_POST['password'] ?? '';
 
             if ($email === '' || $password === ''){
                 return [
-                    'path' => 'feed/index',
+                    'path' => [null, 'feed/index'],
                     'data' => null
                 ];
             }
@@ -74,6 +74,16 @@
             "samesite" => "Strict"
             ]);
             header('Location: /');
+            exit;
+        }
+
+        public function processSignOut(){
+            $token = $_COOKIE['cookie_session'];
+
+            $this->sessionService->Delete($token);
+            setcookie("cookie_session", "", time() - 3600);
+   
+            header('Location: /signin');
             exit;
         }
     }

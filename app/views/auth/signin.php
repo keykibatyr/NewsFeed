@@ -1,7 +1,7 @@
 
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 bg-white rounded-2xl shadow p-10">
 
-    <h1 class="text-3xl font-bold text-black-900 text-center">Sign In</h1>
+    <h1 id = SignIn-Text class="text-3xl font-bold text-black-900 text-center">Sign In</h1>
     <p class="mt-2 text-center text-gray-600">
       Welcome back. Please enter your credentials.
     </p>
