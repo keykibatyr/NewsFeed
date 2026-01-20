@@ -29,16 +29,16 @@
 
         <form method="POST" action="/post/like">
           <input type="hidden" name="post_id" value="<?= (int)$post->id ?>">
-          <button type="submit" class="text-blue-600 hover:underline">
-            👍 <?= (int)($post->likes ?? 0) ?>
+          <button type="submit" class="flex items-center gap-1 text-blue-600">
+             <i class="fa fa-thumbs-up"></i> <?= (int)($post->likes ?? 0) ?>
           </button>
         </form>
         
         <a
           href="/post/comments/<?= (int)$post->id ?>"
-          class="text-gray-600 hover:underline"
+          class="flex items-center gap-1 text-gray-600"
         >
-          💬 <?= (int)($post->comments) ?>
+         <i class="fa fa-comment"></i><?= (int)($post->comments) ?>
         </a>
       </div>
 
