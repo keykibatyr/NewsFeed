@@ -35,6 +35,10 @@
 
             $user = $this->userService->CreateUser($nickname, 
             $email, $password);
+            if ($user == null){
+                header('Location: /signup');
+                exit;
+            }
             error_log($user);
             $session = $this->sessionService->Create($user->getID());
             setcookie('cookie_session', $session->getToken(), 

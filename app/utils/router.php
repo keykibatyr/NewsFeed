@@ -77,20 +77,21 @@
             $path_type = $path[1];
 
             ob_start();
-            if ($result['data'] != null){
-                if (isset($result['data']['comments'])){
-                    $comments = $result['data']['comments'];
-                }
-                if (isset($result['data']['posts'])){
-                    $posts = $result['data']['posts'];
-                } 
-                if (isset($result['data']['post_id'])){
-                    $post_id = $result['data']['post_id'];
-                }
-                if (isset($result['data']['stats'])){
-                    $stats = $result['data']['stats'];
-                }
-            } //refactor it later
+            if (!empty($result['data'])){
+                // if (isset($result['data']['comments'])){
+                //     $comments = $result['data']['comments'];
+                // }
+                // if (isset($result['data']['posts'])){
+                //     $posts = $result['data']['posts'];
+                // } 
+                // if (isset($result['data']['post_id'])){
+                //     $post_id = $result['data']['post_id'];
+                // }
+                // if (isset($result['data']['stats'])){
+                //     $stats = $result['data']['stats'];
+                // }
+                extract($result['data'], EXTR_SKIP); // ig it does the same thing as the code above, but without bullshit
+            } //refactor it later //DONE
 
             // var_dump($posts);
             if (isset($path_type)){

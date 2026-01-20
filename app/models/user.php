@@ -44,10 +44,21 @@
             $this -> db = $db;
         }
 
-        function CreateUser(string $nickname, string $email, string $password): User{
+        function CreateUser(string $nickname, string $email, string $password): ?User{
 
             $email = strtolower($email);
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+            $query = $this -> db -> prepare("SELECT COUNT(*) FROM users WHERE email = :email OR nickname = :nick");
+
+            $query -> execute([
+                ':email' => $email,
+                ':nick' => $nickname
+            ]);
+
+            if (($query->fetchColumn())!=0){
+                return null;
+            }
 
             $query = $this->db->prepare(
                 "INSERT INTO users (nickname, email, password_hash) VALUES (:nick, :email, :pwHash)"
