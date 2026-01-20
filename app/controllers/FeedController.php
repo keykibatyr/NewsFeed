@@ -1,7 +1,7 @@
 <?php 
-    require_once(ROOT_PATH . '/models/session.php');
-    require_once(ROOT_PATH . '/models/post.php');
-      require_once(ROOT_PATH . '/models/like.php');
+    // require_once(ROOT_PATH . '/models/session.php');
+    // require_once(ROOT_PATH . '/repository/post-service.php');
+    // require_once(ROOT_PATH . '/models/like.php');
     class FeedController {
 
         private PostService $postService;

@@ -1,5 +1,5 @@
 <?php 
-    require_once(ROOT_PATH . '/models/user.php');
+    // require_once(ROOT_PATH . '/models/user.php');
     class AdminController{
         private UserService $userService;
         private PostService $postService;

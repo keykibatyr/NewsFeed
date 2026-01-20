@@ -3,11 +3,12 @@ define('ROOT_PATH', dirname(__DIR__));
 
 require __DIR__ . '/../utils/router.php';
 
-require __DIR__ . '/../models/user.php';
-require __DIR__ . '/../models/session.php';
-require __DIR__ . '/../models/post.php';
-require __DIR__ . '/../models/like.php';
-require __DIR__ . '/../models/comment.php';
+require __DIR__ . '/../repository/comment-service.php';
+require __DIR__ . '/../repository/like-service.php';
+require __DIR__ . '/../repository/post-service.php';
+require __DIR__ . '/../repository/session-service.php';
+require __DIR__ . '/../repository/user-service.php';
+
 
 require __DIR__ . '/../controllers/FeedController.php';
 require __DIR__ . '/../controllers/UserController.php';
@@ -15,12 +16,6 @@ require __DIR__ . '/../controllers/AdminController.php';
 
 require __DIR__ . '/../utils/migration.php';
 require __DIR__ . '/../utils/mysql.php';
-
-
-// require_once("/Users/keykibatyr/NewsFeedPHP/news-feed-proj/app/controllers/UserController.php");
-// require_once("/Users/keykibatyr/NewsFeedPHP/news-feed-proj/app/controllers/FeedController.php");
-// require_once("/Users/keykibatyr/NewsFeedPHP/news-feed-proj/app/models/user.php");
-// require_once("/Users/keykibatyr/NewsFeedPHP/news-feed-proj/app/utils/migration.php");
 
 $mySqlConf = new MySqlConfig('db', 'keykibatyr', 'alisher0505', 'newsfeed');
 $db = OpenPDO($mySqlConf);
